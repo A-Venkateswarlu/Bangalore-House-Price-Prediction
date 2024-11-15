@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <script>
+        function showPrediction(event) {
+            event.preventDefault();
+            const formData = new FormData(document.querySelector('form'));
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/predict', true);
+            document.getElementById("prediction").innerText = "Wait Predicting Price!.....";
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    document.getElementById("prediction").innerText = "Prediction: ₹" + xhr.responseText;
+                }
+            };
+            xhr.send(formData);
+        }
+    </script>
+</head>
+<body>
+    <div class="card">
+        <h1>House Price Predictor</h1>
+        <p><b>Welcome to Bengulore House price predictor, find the house price in Bengulore by filling the form</b></p>
+        <form onsubmit="showPrediction(event);">
+            <div class="form-grid">
+                <div>
+                    <label for="location"><b>Location</b></label>
+                    <select id="location" name="location" required>
+                        {% for location in locations %}
+                            <option value="{{ location }}">{{ location }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="size"><b>Size (sq ft)</b></label>
+                    <input type="number" id="size" name="size" required>
+                </div>
+                <div>
+                    <label for="bedrooms"><b>Number of Bedrooms</b></label>
+                    <input type="number" id="bedrooms" name="bedrooms" required>
+                </div>
+                <div>
+                    <label for="bathrooms"><b>Number of Bathrooms</b></label>
+                    <input type="number" id="bathrooms" name="bathrooms" required>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <p id="prediction" class="prediction"></p>
+    </div>
+</body>
+</html>

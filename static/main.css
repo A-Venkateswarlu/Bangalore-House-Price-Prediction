@@ -1,0 +1,75 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('/static/images/background.jpg'); /* Ensure the path is correct */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.5); /* Slight transparency for the card */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    
+}
+
+.card h1 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    background-color:  #E0CC7C;
+}
+
+.card p {
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+    
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form-grid label {
+    text-align: left;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 1);
+    color: #fa0909;
+}   
+
+.form-grid input, .form-grid select {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.prediction {
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #08f700;
+}
